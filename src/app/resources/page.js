@@ -7,7 +7,7 @@ const resources = [
       {
         title: 'National Commission for Women',
         description: 'Official government body working for women\'s rights and safety.',
-        link: 'http://www.ncw.nic.in/',
+        link: 'https://www.ncw.gov.in/',
         type: 'website',
       },
       {
