@@ -59,16 +59,6 @@ export default function RootLayout({ children }) {
               }
             });
 
-            // Disable developer tools
-            setInterval(() => {
-              const devtools = /./;
-              devtools.toString = function() {
-                window.location.href = '/';
-              }
-              console.log(devtools);
-              console.clear();
-            }, 1000);
-
             // Disable text selection
             document.addEventListener('selectstart', (e) => e.preventDefault());
             document.addEventListener('dragstart', (e) => e.preventDefault());
@@ -79,6 +69,48 @@ export default function RootLayout({ children }) {
                 e.preventDefault();
               }
             });
+
+            // Developer tools detection without redirect
+            let devtools = {
+              isOpen: false,
+              orientation: undefined
+            };
+
+            const threshold = 160;
+
+            const emitEvent = (isOpen, orientation) => {
+              window.dispatchEvent(new CustomEvent('devtoolschange', {
+                detail: {
+                  isOpen,
+                  orientation
+                }
+              }));
+            };
+
+            const main = ({emitEvents = true} = {}) => {
+              const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+              const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+
+              if (
+                !(heightThreshold && widthThreshold) &&
+                ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
+              ) {
+                if (!devtools.isOpen || devtools.orientation !== undefined) {
+                  devtools.isOpen = true;
+                }
+              } else {
+                if (devtools.isOpen) {
+                  devtools.isOpen = false;
+                }
+              }
+
+              if (emitEvents) {
+                emitEvent(devtools.isOpen, devtools.orientation);
+              }
+            };
+
+            main({emitEvents: false});
+            setInterval(main, 1000);
           `}
         </Script>
       </head>
