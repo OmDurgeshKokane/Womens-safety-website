@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield background -->
+  <path d="M16 2L4 7V16C4 23.732 9.268 29 16 29C22.732 29 28 23.732 28 16V7L16 2Z" fill="#EF4444" />
+  
+  <!-- Inner shield area -->
+  <path d="M16 5L7 8.75V16C7 21.523 11.477 26 16 26C20.523 26 25 21.523 25 16V8.75L16 5Z" fill="white" />
+  
+  <!-- Stylized woman figure -->
+  <path d="M16 8.5C17.6569 8.5 19 9.84315 19 11.5C19 13.1569 17.6569 14.5 16 14.5C14.3431 14.5 13 13.1569 13 11.5C13 9.84315 14.3431 8.5 16 8.5Z" fill="#EF4444"/>
+  <path d="M19.5 15H12.5L11 24H13L14 21H18L19 24H21L19.5 15Z" fill="#EF4444"/>
+  <path d="M14.5 18.5H17.5" stroke="#EF4444" stroke-width="1.5"/>
+</svg> 
