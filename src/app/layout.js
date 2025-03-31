@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from './ClientLayout';
+import Script from 'next/script';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,59 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script id="anti-inspect" strategy="beforeInteractive">
+          {`
+            // Disable right click
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+            // Disable keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+              // Disable F12
+              if (e.key === 'F12') {
+                e.preventDefault();
+              }
+              // Disable Ctrl+Shift+I
+              if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+              }
+              // Disable Ctrl+Shift+J
+              if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+                e.preventDefault();
+              }
+              // Disable Ctrl+Shift+C
+              if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+              }
+              // Disable Ctrl+U
+              if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+              }
+            });
+
+            // Disable developer tools
+            setInterval(() => {
+              const devtools = /./;
+              devtools.toString = function() {
+                window.location.href = '/';
+              }
+              console.log(devtools);
+              console.clear();
+            }, 1000);
+
+            // Disable text selection
+            document.addEventListener('selectstart', (e) => e.preventDefault());
+            document.addEventListener('dragstart', (e) => e.preventDefault());
+
+            // Disable view source
+            document.addEventListener('keydown', (e) => {
+              if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+              }
+            });
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex flex-col`}
       >
