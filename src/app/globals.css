@@ -44,7 +44,10 @@ body {
 }
 
 .emergency-button {
-  @apply bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-full transition-colors duration-200 shadow-lg;
+  @apply bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-3 sm:px-4 rounded-full transition-colors duration-200 shadow-lg text-xs sm:text-sm whitespace-nowrap flex items-center justify-center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .safety-card {
@@ -53,4 +56,140 @@ body {
 
 .nav-link {
   @apply text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200;
+  max-width: max-content;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-container {
+  @apply flex flex-wrap items-center;
+}
+
+.site-title {
+  @apply font-bold text-blue-600 dark:text-blue-400;
+  font-size: clamp(0.875rem, 3vw, 1.5rem); 
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.title-line {
+  @apply block leading-tight;
+}
+
+.subtitle-line {
+  @apply block text-blue-600 dark:text-blue-400 leading-tight mt-2;
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 1023px) {
+  .site-title {
+    max-width: 180px;
+    font-size: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Mobile specific title adjustments */
+@media (max-width: 767px) {
+  .site-title {
+    max-width: 180px;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+  
+  /* Ensure English title shows completely */
+  html[lang="en"] .site-title {
+    max-width: 200px;
+  }
+}
+
+/* Language specific adjustments */
+html[lang="hi"] .nav-link, 
+html[lang="mr"] .nav-link {
+  letter-spacing: -0.01em;
+}
+
+html[lang="hi"] .site-title,
+html[lang="mr"] .site-title {
+  font-size: clamp(0.85rem, 2.5vw, 1.25rem);
+}
+
+/* Mobile title for Hindi and Marathi */
+@media (max-width: 767px) {
+  html[lang="hi"] .site-title,
+  html[lang="mr"] .site-title {
+    font-size: 0.95rem;
+    max-width: 155px;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile menu adjustments */
+@media (max-width: 767px) {
+  .emergency-button {
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+/* Language specific adjustments */
+html[lang="hi"] .emergency-button,
+html[lang="mr"] .emergency-button {
+  font-size: 0.75rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  min-width: 120px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Navbar specific adjustments for Hindi and Marathi */
+@media (min-width: 768px) {
+  .emergency-button {
+    font-size: 0.875rem;
+    padding: 0.625rem 1rem;
+    min-width: 130px;
+  }
+  
+  html[lang="hi"] .navbar-emergency-buttons,
+  html[lang="mr"] .navbar-emergency-buttons {
+    display: flex;
+    gap: 0.5rem;
+    min-width: 260px;
+  }
+  
+  html[lang="hi"] .emergency-button,
+  html[lang="mr"] .emergency-button {
+    flex: 1;
+    font-size: 0.875rem;
+    padding: 0.625rem 1rem;
+    min-width: 130px;
+    font-weight: 600;
+  }
+}
+
+/* Mobile emergency buttons for all languages */
+@media (max-width: 767px) {
+  html[lang="hi"] .emergency-button,
+  html[lang="mr"] .emergency-button {
+    font-size: 0.95rem;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+    font-weight: 700;
+  }
 }

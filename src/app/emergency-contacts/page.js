@@ -1,278 +1,280 @@
 'use client';
 
 import { useState } from 'react';
-
-const emergencyContacts = [
-  {
-    name: 'National Emergency Number',
-    number: '112',
-    description: 'All-in-one emergency number for police, ambulance, and fire services',
-  },
-  {
-    name: 'Women Helpline',
-    number: '181',
-    description: '24/7 helpline for women in distress',
-  },
-  {
-    name: 'Police Control Room',
-    number: '100',
-    description: 'General police emergency number',
-  },
-  {
-    name: 'Child Helpline',
-    number: '1098',
-    description: '24/7 helpline for children in need of care and protection',
-  },
-  {
-    name: 'Anti-Stalking Helpline',
-    number: '181',
-    description: 'Dedicated helpline for stalking-related issues',
-  },
-  {
-    name: 'Cyber Crime Helpline',
-    number: '155260',
-    description: 'For reporting cyber crimes and online harassment',
-  },
-];
-
-const stateContacts = [
-  {
-    state: 'Andhra Pradesh',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Arunachal Pradesh',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Assam',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Bihar',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Chhattisgarh',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Goa',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Gujarat',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Haryana',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Himachal Pradesh',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Jharkhand',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Karnataka',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Kerala',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Madhya Pradesh',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Maharashtra',
-    contacts: [
-      { name: 'Women Helpline', number: '103' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Manipur',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Meghalaya',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Mizoram',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Nagaland',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Odisha',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Punjab',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Rajasthan',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Sikkim',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Tamil Nadu',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Telangana',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Tripura',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Uttar Pradesh',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Uttarakhand',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'West Bengal',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-  {
-    state: 'Delhi (NCT)',
-    contacts: [
-      { name: 'Women Helpline', number: '181' },
-      { name: 'Police Control Room', number: '100' },
-      { name: 'Ambulance', number: '108' },
-    ],
-  },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function EmergencyContacts() {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   
+  const emergencyContacts = [
+    {
+      name: t['emergencyContacts.national1.name'],
+      number: '112',
+      description: t['emergencyContacts.national1.desc'],
+    },
+    {
+      name: t['emergencyContacts.national2.name'],
+      number: '181',
+      description: t['emergencyContacts.national2.desc'],
+    },
+    {
+      name: t['emergencyContacts.national3.name'],
+      number: '100',
+      description: t['emergencyContacts.national3.desc'],
+    },
+    {
+      name: t['emergencyContacts.national4.name'],
+      number: '1098',
+      description: t['emergencyContacts.national4.desc'],
+    },
+    {
+      name: t['emergencyContacts.national5.name'],
+      number: '181',
+      description: t['emergencyContacts.national5.desc'],
+    },
+    {
+      name: t['emergencyContacts.national6.name'],
+      number: '155260',
+      description: t['emergencyContacts.national6.desc'],
+    },
+  ];
+
+  const stateContacts = [
+    {
+      state: 'Andhra Pradesh',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Arunachal Pradesh',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Assam',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Bihar',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Chhattisgarh',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Goa',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Gujarat',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Haryana',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Himachal Pradesh',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Jharkhand',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Karnataka',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Kerala',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Madhya Pradesh',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Maharashtra',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '103' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Manipur',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Meghalaya',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Mizoram',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Nagaland',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Odisha',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Punjab',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Rajasthan',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Sikkim',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Tamil Nadu',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Telangana',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Tripura',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Uttar Pradesh',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Uttarakhand',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'West Bengal',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+    {
+      state: 'Delhi (NCT)',
+      contacts: [
+        { name: t['emergencyContacts.state.womenHelpline'], number: '181' },
+        { name: t['emergencyContacts.state.police'], number: '100' },
+        { name: t['emergencyContacts.state.ambulance'], number: '108' },
+      ],
+    },
+  ];
+
   // Filter states based on search term
   const filteredStates = stateContacts.filter(state =>
     state.state.toLowerCase().includes(searchTerm.toLowerCase())
@@ -283,17 +285,17 @@ export default function EmergencyContacts() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center">
           <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
-            Emergency Contacts
+            {t['emergencyContacts.title']}
           </h1>
           <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400 sm:mt-4">
-            Quick access to essential emergency numbers and helplines
+            {t['emergencyContacts.subtitle']}
           </p>
         </div>
 
         {/* National Emergency Numbers */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            National Emergency Numbers
+            {t['emergencyContacts.national']}
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {emergencyContacts.map((contact) => (
@@ -318,7 +320,7 @@ export default function EmergencyContacts() {
         {/* State-wise Contacts */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            State-wise Emergency Contacts
+            {t['emergencyContacts.stateWise']}
           </h2>
           
           {/* Search input */}
@@ -327,7 +329,7 @@ export default function EmergencyContacts() {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search for your state..."
+              placeholder={t['emergencyContacts.searchPlaceholder']}
               className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white"
             />
             {searchTerm && (
@@ -368,7 +370,7 @@ export default function EmergencyContacts() {
           {/* No results message */}
           {searchTerm && filteredStates.length === 0 && (
             <div className="text-center py-8">
-              <p className="text-gray-500 dark:text-gray-400">No states found matching "{searchTerm}"</p>
+              <p className="text-gray-500 dark:text-gray-400">{t['emergencyContacts.noResults']} "{searchTerm}"</p>
             </div>
           )}
         </div>
@@ -376,7 +378,7 @@ export default function EmergencyContacts() {
         {/* Emergency Button */}
         <div className="mt-12 text-center">
           <a href="tel:112" className="emergency-button inline-block">
-            Call Emergency: 112
+            {t['emergency.call']}
           </a>
         </div>
       </div>

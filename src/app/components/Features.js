@@ -1,5 +1,7 @@
 'use client';
 
+import { useLanguage } from '../context/LanguageContext';
+
 // Using regular SVG components instead of heroicons
 const PhoneIcon = (props) => (
   <svg 
@@ -103,52 +105,54 @@ const BookOpenIcon = (props) => (
   </svg>
 );
 
-const features = [
-  {
-    name: 'Emergency Contacts',
-    description: 'Access a comprehensive list of emergency helpline numbers for all states and crucial safety services.',
-    icon: PhoneIcon,
-  },
-  {
-    name: 'Safety Guidelines',
-    description: 'Learn essential safety tips and precautionary measures for various situations and environments.',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Self-Defense Tips',
-    description: 'Discover basic self-defense techniques and strategies to protect yourself in challenging situations.',
-    icon: LightBulbIcon,
-  },
-  {
-    name: 'Location Tracking',
-    description: 'Share your location with trusted contacts and access nearby emergency services.',
-    icon: MapIcon,
-  },
-  {
-    name: 'Community Support',
-    description: 'Connect with support groups and access community resources for women\'s safety.',
-    icon: UserGroupIcon,
-  },
-  {
-    name: 'Educational Resources',
-    description: 'Access articles, guides, and videos on personal safety and self-defense.',
-    icon: BookOpenIcon,
-  },
-];
-
 export default function Features() {
+  const { t } = useLanguage();
+  
+  const features = [
+    {
+      name: t['nav.emergencyContacts'],
+      description: t['features.emergencyDesc'],
+      icon: PhoneIcon,
+    },
+    {
+      name: t['nav.safetyTips'],
+      description: t['features.safetyDesc'],
+      icon: ShieldCheckIcon,
+    },
+    {
+      name: t['nav.selfDefense'],
+      description: t['features.defenseDesc'],
+      icon: LightBulbIcon,
+    },
+    {
+      name: t['features.locationTracking'],
+      description: t['features.locationDesc'],
+      icon: MapIcon,
+    },
+    {
+      name: t['features.community'],
+      description: t['features.communityDesc'],
+      icon: UserGroupIcon,
+    },
+    {
+      name: t['nav.resources'],
+      description: t['features.resourcesDesc'],
+      icon: BookOpenIcon,
+    },
+  ];
+  
   return (
     <div className="py-12 bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="text-base text-blue-600 dark:text-blue-400 font-semibold tracking-wide uppercase">
-            Features
+            {t['features.title']}
           </h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            Everything you need to stay safe
+            {t['features.heading']}
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-400 lg:mx-auto">
-            Comprehensive safety resources and tools designed to empower women with knowledge and support.
+            {t['footer.description']}
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useLanguage } from '../context/LanguageContext';
 
 // Using regular SVG components instead of heroicons
 const PhoneIcon = (props) => (
@@ -67,6 +68,8 @@ const WomanIcon = (props) => (
 );
 
 export default function Hero() {
+  const { t } = useLanguage();
+  
   return (
     <div className="relative bg-white dark:bg-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -74,27 +77,27 @@ export default function Hero() {
           <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-left">
               <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-                <span className="block">Your Safety</span>
-                <span className="block text-blue-600 dark:text-blue-400">Is Our Priority</span>
+                <span className="title-line">{t['hero.yourSafety']}</span>
+                <span className="subtitle-line">{t['hero.priority']}</span>
               </h1>
-              <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Access essential safety guidelines, emergency contacts, and self-defense resources to help you stay safe and empowered.
+              <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 min-h-[3rem] md:min-h-[4rem]">
+                {t['hero.subtitle']}
               </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-3">
                 <div className="rounded-md shadow">
                   <a
                     href="/emergency-contacts"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
+                    className="w-full flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-3 md:text-lg md:px-8"
                   >
-                    Emergency Contacts
+                    {t['nav.emergencyContacts']}
                   </a>
                 </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
+                <div className="sm:mt-0">
                   <a
                     href="/safety-tips"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 md:py-4 md:text-lg md:px-10"
+                    className="w-full flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 md:py-3 md:text-lg md:px-8"
                   >
-                    Safety Tips
+                    {t['nav.safetyTips']}
                   </a>
                 </div>
               </div>
@@ -117,18 +120,18 @@ export default function Hero() {
           
           {/* Content over the image */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="p-6 rounded-lg max-w-md mx-auto text-white">
-              <div className="flex items-center space-x-4 mb-6">
-                <PhoneIcon className="h-8 w-8 icon-shadow" />
-                <span className="text-xl font-bold text-shadow">24/7 Emergency Support</span>
+            <div className="p-4 sm:p-6 rounded-lg max-w-md mx-auto text-white">
+              <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                <PhoneIcon className="h-6 w-6 sm:h-8 sm:w-8 icon-shadow" />
+                <span className="text-base sm:text-xl font-bold text-shadow">{t['hero.emergencySupport']}</span>
               </div>
-              <div className="flex items-center space-x-4 mb-6">
-                <ShieldCheckIcon className="h-8 w-8 icon-shadow" />
-                <span className="text-xl font-bold text-shadow">Safety Guidelines</span>
+              <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                <ShieldCheckIcon className="h-6 w-6 sm:h-8 sm:w-8 icon-shadow" />
+                <span className="text-base sm:text-xl font-bold text-shadow">{t['hero.safetyGuidelines']}</span>
               </div>
-              <div className="flex items-center space-x-4">
-                <LightBulbIcon className="h-8 w-8 icon-shadow" />
-                <span className="text-xl font-bold text-shadow">Self-Defense Tips</span>
+              <div className="flex items-center space-x-3 sm:space-x-4">
+                <LightBulbIcon className="h-6 w-6 sm:h-8 sm:w-8 icon-shadow" />
+                <span className="text-base sm:text-xl font-bold text-shadow">{t['hero.defenseTips']}</span>
               </div>
             </div>
           </div>

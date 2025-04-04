@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useLanguage } from '../context/LanguageContext';
 
 const navigation = {
   main: [
@@ -50,11 +51,21 @@ const navigation = {
 };
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
+  const mainNavigation = [
+    { name: t['nav.home'], href: '/' },
+    { name: t['nav.safetyTips'], href: '/safety-tips' },
+    { name: t['nav.emergencyContacts'], href: '/emergency-contacts' },
+    { name: t['nav.selfDefense'], href: '/self-defense' },
+    { name: t['nav.resources'], href: '/resources' },
+  ];
+  
   return (
     <footer className="bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <nav className="flex flex-wrap justify-center -mx-5 -my-4">
-          {navigation.main.map((item) => (
+          {mainNavigation.map((item) => (
             <div key={item.name} className="px-5 py-4">
               <Link
                 href={item.href}
@@ -78,7 +89,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-8 text-center text-base text-gray-500 dark:text-gray-400">
-          &copy; {new Date().getFullYear()} Women's Safety Guide. All rights reserved.
+          &copy; {new Date().getFullYear()} {t['hero.title']}. {t['footer.rights']}.
         </p>
         <p className="mt-2 text-center text-sm text-blue-500 dark:text-blue-400">
           Made by @OmCodes
