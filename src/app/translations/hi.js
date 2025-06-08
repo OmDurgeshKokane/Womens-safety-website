@@ -5,12 +5,32 @@ export const hi = {
   "nav.emergencyContacts": "आपातकालीन संपर्क",
   "nav.selfDefense": "आत्मरक्षा",
   "nav.resources": "संसाधन",
+  "nav.shareLocation": "लोकेशन शेयर करें",
   
   // Emergency buttons
   "emergency.main": "आपातकालीन: 112",
   "emergency.women": "महिला हेल्पलाइन: 181",
   "emergency.helpline": "महिला हेल्पलाइन: 181",
   "emergency.call": "आपातकालीन कॉल करें: 112",
+  
+  // Location sharing
+  "location.shareLocation": "लोकेशन शेयर करें",
+  "location.getLocation": "लोकेशन प्राप्त करें",
+  "location.shareWhatsApp": "व्हाट्सएप पर शेयर करें",
+  "location.shareOther": "अन्य ऐप्स पर शेयर करें",
+  "location.notSupported": "आपका ब्राउज़र जियोलोकेशन का समर्थन नहीं करता है",
+  "location.error": "आपका स्थान प्राप्त करने में असमर्थ",
+  "location.shareTitle": "मेरा वर्तमान स्थान",
+  "location.emergencyMessage": "यहां मेरा वर्तमान स्थान है",
+  "location.secureOriginRequired": "सुरक्षा कारणों से, लोकेशन शेयरिंग केवल HTTPS वेबसाइटों पर काम करती है",
+  "location.permissionDenied": "लोकेशन अनुमति अस्वीकृत, कृपया अपने ब्राउज़र सेटिंग्स में सक्षम करें",
+  "location.positionUnavailable": "लोकेशन जानकारी उपलब्ध नहीं है",
+  "location.timeout": "लोकेशन अनुरोध समय समाप्त, कृपया पुनः प्रयास करें",
+  "location.manualLocation": "लोकेशन मैन्युअली दर्ज करें",
+  "location.enterAddress": "अपना पता या लैंडमार्क दर्ज करें",
+  "location.addressPlaceholder": "जैसे: इंडिया गेट, दिल्ली",
+  "location.share": "शेयर करें",
+  "location.getLocationFirst": "कृपया शेयर करने से पहले अपना स्थान प्राप्त करें",
   
   // Hero section
   "hero.title": "महिला सुरक्षा गाइड",

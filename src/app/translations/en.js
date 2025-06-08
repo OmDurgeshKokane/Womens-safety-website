@@ -5,12 +5,32 @@ export const en = {
   "nav.emergencyContacts": "Emergency Contacts",
   "nav.selfDefense": "Self Defense",
   "nav.resources": "Resources",
+  "nav.shareLocation": "Share Location",
   
   // Emergency buttons
   "emergency.main": "Emergency: 112",
   "emergency.women": "Women Helpline: 181",
   "emergency.helpline": "Women Helpline: 181",
   "emergency.call": "Call Emergency: 112",
+  
+  // Location sharing
+  "location.shareLocation": "Share Location",
+  "location.getLocation": "Get Location",
+  "location.shareWhatsApp": "Share via WhatsApp",
+  "location.shareOther": "Share via Other Apps",
+  "location.notSupported": "Geolocation is not supported by your browser",
+  "location.error": "Unable to get your location",
+  "location.shareTitle": "My Current Location",
+  "location.emergencyMessage": "Here is my current location",
+  "location.secureOriginRequired": "For security reasons, location sharing only works on HTTPS websites",
+  "location.permissionDenied": "Location permission denied, please enable in your browser settings",
+  "location.positionUnavailable": "Location information unavailable",
+  "location.timeout": "Location request timed out, please try again",
+  "location.manualLocation": "Enter Location Manually",
+  "location.enterAddress": "Enter your address or landmark",
+  "location.addressPlaceholder": "e.g. Central Park, New York",
+  "location.share": "Share",
+  "location.getLocationFirst": "Please get your location first before sharing",
   
   // Hero section
   "hero.title": "Women's Safety Guide",

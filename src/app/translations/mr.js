@@ -5,12 +5,32 @@ export const mr = {
   "nav.emergencyContacts": "आपत्कालीन संपर्क",
   "nav.selfDefense": "स्वसंरक्षण",
   "nav.resources": "संसाधने",
+  "nav.shareLocation": "स्थान शेअर करा",
   
   // Emergency buttons
   "emergency.main": "आपत्कालीन: 112",
   "emergency.women": "महिला हेल्पलाइन: 181",
   "emergency.helpline": "महिला हेल्पलाइन: 181",
   "emergency.call": "आपत्कालीन कॉल करा: 112",
+  
+  // Location sharing
+  "location.shareLocation": "स्थान शेअर करा",
+  "location.getLocation": "स्थान मिळवा",
+  "location.shareWhatsApp": "व्हाट्सएप वर शेअर करा",
+  "location.shareOther": "इतर अॅप्स वर शेअर करा",
+  "location.notSupported": "तुमचा ब्राउझर जिओलोकेशन समर्थित करत नाही",
+  "location.error": "तुमचे स्थान मिळवण्यात अक्षम",
+  "location.shareTitle": "माझे वर्तमान स्थान",
+  "location.emergencyMessage": "हे माझे वर्तमान स्थान आहे",
+  "location.secureOriginRequired": "सुरक्षा कारणांसाठी, स्थान शेअरिंग फक्त HTTPS वेबसाईट्सवर कार्य करते",
+  "location.permissionDenied": "स्थान परवानगी नाकारली, कृपया तुमच्या ब्राउझर सेटिंग्जमध्ये सक्षम करा",
+  "location.positionUnavailable": "स्थान माहिती उपलब्ध नाही",
+  "location.timeout": "स्थान विनंती वेळ संपली, कृपया पुन्हा प्रयत्न करा",
+  "location.manualLocation": "स्थान स्वतः प्रविष्ट करा",
+  "location.enterAddress": "तुमचा पत्ता किंवा लँडमार्क प्रविष्ट करा",
+  "location.addressPlaceholder": "उदा: गेटवे ऑफ इंडिया, मुंबई",
+  "location.share": "शेअर करा",
+  "location.getLocationFirst": "कृपया शेअर करण्यापूर्वी तुमचे स्थान प्रथम मिळवा",
   
   // Hero section
   "hero.title": "महिला सुरक्षा मार्गदर्शक",
