@@ -624,3 +624,34 @@ body {
   background-color: transparent !important;
   color: rgb(156, 163, 175) !important; /* Same fixed RGB value */
 }
+
+/* Dropdown item that shouldn't have hover effect */
+.dropdown-item.no-hover:hover {
+  background-color: transparent !important;
+}
+
+/* Accuracy status colors */
+.text-green-500 {
+  color: #10b981 !important;
+}
+
+.text-yellow-500 {
+  color: #f59e0b !important;
+}
+
+.text-orange-500 {
+  color: #f97316 !important;
+}
+
+/* Dark mode accuracy colors */
+.dark .text-green-500 {
+  color: #34d399 !important;
+}
+
+.dark .text-yellow-500 {
+  color: #fbbf24 !important;
+}
+
+.dark .text-orange-500 {
+  color: #fb923c !important;
+}

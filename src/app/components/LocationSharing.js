@@ -77,6 +77,7 @@ export default function LocationSharing({ isMobile, iconOnly, compactDesktop }) 
   const [loading, setLoading] = useState(false);
   const [showManualInput, setShowManualInput] = useState(false);
   const [manualAddress, setManualAddress] = useState('');
+  const [accuracy, setAccuracy] = useState(null);
   const dropdownRef = useRef(null);
   const errorTimeoutRef = useRef(null);
   const { t } = useLanguage();
@@ -138,15 +139,27 @@ export default function LocationSharing({ isMobile, iconOnly, compactDesktop }) 
 
     const options = {
       enableHighAccuracy: true,
-      timeout: 30000, // Increased from 5000 to 30000 (30 seconds) for better mobile performance
-      maximumAge: 0
+      timeout: 30000, // 30 seconds for better mobile performance
+      maximumAge: 0    // Always get fresh position
     };
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const { latitude, longitude } = position.coords;
+        const { latitude, longitude, accuracy: locationAccuracy } = position.coords;
         setLocation({ latitude, longitude });
+        setAccuracy(locationAccuracy); // Save accuracy in meters
         setLoading(false);
+        
+        // If accuracy is poor (more than 100 meters), try to get a better reading
+        if (locationAccuracy > 100) {
+          // Show a notification about poor accuracy but still use the location
+          setError(t['location.poorAccuracy'] || "Location accuracy is low. Try again in an open area.");
+          
+          // Clear error after 5 seconds
+          setTimeout(() => {
+            setError(null);
+          }, 5000);
+        }
       },
       (err) => {
         console.error(`ERROR(${err.code}): ${err.message}`);
@@ -188,16 +201,19 @@ export default function LocationSharing({ isMobile, iconOnly, compactDesktop }) 
     }
 
     let shareUrl;
+    let accuracyInfo = accuracy ? `\n${t['location.accuracy'] || 'Accuracy'}: ${Math.round(accuracy)} ${t['location.meters'] || 'meters'}` : '';
+    
     if (location.address) {
       // Using manual address
       shareUrl = location.url;
+      accuracyInfo = ''; // No accuracy for manual address
     } else {
       // Using coordinates
       const { latitude, longitude } = location;
       shareUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
     }
 
-    const whatsappMessage = `${t['location.emergencyMessage']}: ${shareUrl}`;
+    const whatsappMessage = `${t['location.emergencyMessage']}: ${shareUrl}${accuracyInfo}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
     setShowDropdown(false);
@@ -210,9 +226,12 @@ export default function LocationSharing({ isMobile, iconOnly, compactDesktop }) 
     }
 
     let shareUrl;
+    let accuracyInfo = accuracy ? `\n${t['location.accuracy'] || 'Accuracy'}: ${Math.round(accuracy)} ${t['location.meters'] || 'meters'}` : '';
+    
     if (location.address) {
       // Using manual address
       shareUrl = location.url;
+      accuracyInfo = ''; // No accuracy for manual address
     } else {
       // Using coordinates
       const { latitude, longitude } = location;
@@ -222,7 +241,7 @@ export default function LocationSharing({ isMobile, iconOnly, compactDesktop }) 
     if (navigator.share) {
       navigator.share({
         title: t['location.shareTitle'],
-        text: `${t['location.emergencyMessage']}: `,
+        text: `${t['location.emergencyMessage']}: ${accuracyInfo}`,
         url: shareUrl
       })
       .then(() => console.log('Share successful'))
@@ -364,6 +383,33 @@ export default function LocationSharing({ isMobile, iconOnly, compactDesktop }) 
             {t['location.getLocation']}
             {loading && <span className="ml-2 spinner"></span>}
           </button>
+          
+          {location && accuracy && (
+            <div className="dropdown-item no-hover cursor-default">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+              </svg>
+              <span>
+                {t['location.accuracy'] || 'Accuracy'}: <span className={accuracy > 100 ? 'text-orange-500' : accuracy > 50 ? 'text-yellow-500' : 'text-green-500'}>
+                  {Math.round(accuracy)} {t['location.meters'] || 'meters'}
+                </span>
+                {accuracy > 50 && (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      getLocation();
+                    }}
+                    className="ml-2 text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 inline-block">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                    <span className="ml-1">{t['location.retry'] || 'Retry'}</span>
+                  </button>
+                )}
+              </span>
+            </div>
+          )}
           
           <button 
             className="dropdown-item disabled-share-option"
