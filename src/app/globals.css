@@ -458,14 +458,31 @@ body {
 .dropdown-item.opacity-50 {
   position: relative;
   cursor: not-allowed;
+  color: #9ca3af !important; /* Light gray text for disabled items */
+}
+
+/* Make SVG icons in disabled items lighter too */
+.dropdown-item.opacity-50 svg {
+  color: #9ca3af !important; /* Light gray for icons */
+  opacity: 0.7;
+}
+
+/* Dark mode disabled items */
+.dark .dropdown-item.opacity-50 {
+  color: #6b7280 !important; /* Darker gray for dark mode */
+}
+
+/* Dark mode icons in disabled items */
+.dark .dropdown-item.opacity-50 svg {
+  color: #6b7280 !important; /* Darker gray for icons in dark mode */
+  opacity: 0.7;
 }
 
 /* Professional hover effect for disabled dropdown items */
 .dropdown-item.opacity-50:hover {
   @apply bg-transparent dark:bg-transparent;
+  color: #9ca3af !important; /* Keep text light even on hover */
 }
-
-/* Simple opacity effect for disabled items */
 
 /* Simple opacity style for disabled dropdown items */
 .dropdown-item[disabled] {
