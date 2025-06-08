@@ -454,34 +454,41 @@ body {
   position: relative;
 }
 
-/* Styling for disabled dropdown items */
-.dropdown-item.opacity-50 {
-  position: relative;
-  cursor: not-allowed;
-  color: #9ca3af !important; /* Light gray text for disabled items */
+/* Styling for disabled dropdown items - use fixed RGB color values for consistency */
+.dropdown-item.opacity-50,
+.dropdown-item[data-disabled="true"] {
+  position: relative !important;
+  cursor: not-allowed !important;
+  color: rgb(156, 163, 175) !important; /* Fixed RGB value for light gray */
+  opacity: 1 !important; /* Override the opacity-50 class */
+  background-color: transparent !important;
 }
 
 /* Make SVG icons in disabled items lighter too */
-.dropdown-item.opacity-50 svg {
-  color: #9ca3af !important; /* Light gray for icons */
-  opacity: 0.7;
+.dropdown-item.opacity-50 svg,
+.dropdown-item[data-disabled="true"] svg {
+  color: rgb(156, 163, 175) !important; /* Same fixed RGB value */
+  opacity: 1 !important; /* Full opacity with fixed color */
 }
 
 /* Dark mode disabled items */
-.dark .dropdown-item.opacity-50 {
-  color: #6b7280 !important; /* Darker gray for dark mode */
+.dark .dropdown-item.opacity-50,
+.dark .dropdown-item[data-disabled="true"] {
+  color: rgb(107, 114, 128) !important; /* Fixed RGB value for dark mode */
 }
 
 /* Dark mode icons in disabled items */
-.dark .dropdown-item.opacity-50 svg {
-  color: #6b7280 !important; /* Darker gray for icons in dark mode */
-  opacity: 0.7;
+.dark .dropdown-item.opacity-50 svg,
+.dark .dropdown-item[data-disabled="true"] svg {
+  color: rgb(107, 114, 128) !important; /* Same fixed RGB value for dark mode */
+  opacity: 1 !important;
 }
 
 /* Professional hover effect for disabled dropdown items */
-.dropdown-item.opacity-50:hover {
-  @apply bg-transparent dark:bg-transparent;
-  color: #9ca3af !important; /* Keep text light even on hover */
+.dropdown-item.opacity-50:hover,
+.dropdown-item[data-disabled="true"]:hover {
+  background-color: transparent !important;
+  color: rgb(156, 163, 175) !important; /* Same fixed RGB value */
 }
 
 /* Simple opacity style for disabled dropdown items */
@@ -588,4 +595,32 @@ body {
     background-color: #1f2937;
     border-left-color: #3b82f6;
   }
+}
+
+/* Styling for disabled share options - direct inline approach */
+.disabled-share-option[data-disabled="true"] {
+  color: rgb(156, 163, 175) !important; /* Fixed RGB value for light gray */
+  cursor: not-allowed !important;
+  background-color: transparent !important;
+}
+
+/* SVG icons in disabled share options */
+.disabled-share-option[data-disabled="true"] svg {
+  color: rgb(156, 163, 175) !important; /* Same fixed RGB value */
+}
+
+/* Dark mode disabled share options */
+.dark .disabled-share-option[data-disabled="true"] {
+  color: rgb(107, 114, 128) !important; /* Fixed RGB value for dark mode */
+}
+
+/* Dark mode SVG icons in disabled share options */
+.dark .disabled-share-option[data-disabled="true"] svg {
+  color: rgb(107, 114, 128) !important; /* Same fixed RGB value for dark mode */
+}
+
+/* Hover effect for disabled share options */
+.disabled-share-option[data-disabled="true"]:hover {
+  background-color: transparent !important;
+  color: rgb(156, 163, 175) !important; /* Same fixed RGB value */
 }
