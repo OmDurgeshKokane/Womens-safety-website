@@ -138,7 +138,7 @@ export default function LocationSharing({ isMobile, iconOnly, compactDesktop }) 
 
     const options = {
       enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: 30000, // Increased from 5000 to 30000 (30 seconds) for better mobile performance
       maximumAge: 0
     };
 
