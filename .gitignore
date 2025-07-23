@@ -45,4 +45,7 @@ next-env.d.ts
 
 # documentation
 document.txt
-README.md
+
+# TestSprite testing files and reports
+PRD_TestSprite.md
+testsprite_tests/
